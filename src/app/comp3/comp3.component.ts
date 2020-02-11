@@ -1,0 +1,23 @@
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+
+@Component({
+  selector: 'app-comp3',
+  templateUrl: './comp3.component.html',
+  styleUrls: ['./comp3.component.scss']
+})
+export class Comp3Component implements OnInit {
+  userName: string = 'Kishan';
+  constructor(private user: UserService) { 
+    this.user.userName.subscribe(uname=> {
+      this.userName =uname;
+    })
+  }
+
+  ngOnInit() {
+  
+  }
+  updte(uname){
+    this.user.userName.next(uname.value);
+  }
+}
